@@ -25,7 +25,6 @@ public class ProcessoService {
 		List<ProcessoDTO> todosOsProcessos = retornarTodosOsProcessos();
 		ProcessoDTO processoPorId = null;
 		for(ProcessoDTO processo : todosOsProcessos) {
-			//inverter a comparação para evitar nullpointer
 			if(id.equals(processo.getId())) {
 				processoPorId = processo;
 			}
@@ -37,7 +36,6 @@ public class ProcessoService {
 		List<ProcessoDTO> todosOsProcessos = repositoryDeProcessos.criarRepository();
 		ProcessoDTO processoPorChaveDeProcesso = null;
 		for(ProcessoDTO processo : todosOsProcessos) {
-			//inverter a comparação para evitar nullpointer
 			if(chave.equals(processo.getChaveProcesso())) {
 				processoPorChaveDeProcesso = processo;
 			}
