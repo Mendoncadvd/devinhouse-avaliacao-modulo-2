@@ -20,39 +20,40 @@ import br.com.backend.project.devinhouseavaliacaomodulo2.dto.ProcessoDTO;
 import br.com.backend.project.devinhouseavaliacaomodulo2.service.ProcessoService;
 
 @RestController
-@RequestMapping(headers = "api-version=v1", path = "/v1" + "/processos")
 public class ProcessosControll {
 	
 	@Autowired
 	private ProcessoService service;
 	
-	@PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+	@PostMapping(headers = "api-version=v1", path = "/v1/processo", consumes = APPLICATION_JSON_VALUE, 
+			produces = APPLICATION_JSON_VALUE)
 	public List<ProcessoDTO> criarProcesso(@RequestBody ProcessoDTO novoProcesso) {
 		return service.criarProcesso(novoProcesso);
 	}
 	
-	@GetMapping(produces = APPLICATION_JSON_VALUE)
+	@GetMapping(headers = "api-version=v1", path = "/v1/processos", produces = APPLICATION_JSON_VALUE)
 	public List<ProcessoDTO> consultarTodosOsProcessos() {
 		return service.retornarTodosOsProcessos();
 	}
 
-	@GetMapping(path = "/processo/{id}", produces = APPLICATION_JSON_VALUE) 
+	@GetMapping(headers = "api-version=v1", path = "/v1/processo/{id}", produces = APPLICATION_JSON_VALUE) 
 	public ProcessoDTO consultarProcessoPorId(@PathVariable Integer id) { 
 		return service.retornarProcessoPorId(id); 
 	}
 	 
 	
-	@GetMapping(path = "/processo", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(headers = "api-version=v1", path = "/v1/processo", produces = APPLICATION_JSON_VALUE)
 	public ProcessoDTO consultarProcessoPorChaveDeProcesso(@RequestParam String chave) {
 		return service.retornarProcessoPorChaveDeProcesso(chave);
 	}
 
-	@PutMapping(path = "/processo/{id}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE )
+	@PutMapping(headers = "api-version=v1", path = "/v1/processo/{id}", consumes = APPLICATION_JSON_VALUE, 
+			produces = APPLICATION_JSON_VALUE )
 	public List<ProcessoDTO> atualizarProcesso(@PathVariable Integer id, @RequestBody ProcessoDTO processoAtualizado) {
 		return service.atualizarProcesso(id, processoAtualizado);
 	}
 	
-	@DeleteMapping(path = "/processo/{id}", produces = APPLICATION_JSON_VALUE)
+	@DeleteMapping(headers = "api-version=v1", path = "/v1/processo/{id}", produces = APPLICATION_JSON_VALUE)
 	public List<ProcessoDTO> deletarProcesso(@PathVariable Integer id) {
 		return service.deletarProcesso(id);
 	}
